@@ -1,0 +1,53 @@
+<!-- ── SIDENAV ──────────────────────────────────────────── -->
+  <nav class="mat-sidenav" id="sidenav" [class.collapsed]="sidenavCollapsed">
+    <div class="sidenav-header">
+      <div class="sidenav-logo-icon">
+        <span class="material-icons" style="font-size:16px"
+        (click)="toggleSidenav($event)">hub</span>
+    </div>
+      <span class="sidenav-logo-text">CRM System</span>
+      <button class="sidenav-toggle" (click)="toggleSidenav($event)">
+        <span class="material-icons" id="toggle-icon">menu_open</span>
+      </button>
+    </div>
+
+    <div class="sidenav-nav">
+      <div class="nav-section-title">MAIN</div>
+      <div class="nav-item active" onclick="navigate('dashboard',this)">
+        <span class="material-icons">dashboard</span>
+        <span class="nav-label">Dashboard</span>
+      </div>
+      <div class="nav-item" onclick="navigate('customers',this)">
+        <span class="material-icons">people</span>
+        <span class="nav-label">Customers</span>
+      </div>
+      <div class="nav-item" onclick="navigate('employees',this)">
+        <span class="material-icons">badge</span>
+        <span class="nav-label">Employees</span>
+      </div>
+      <div class="nav-section-title">CONTENT</div>
+      <div class="nav-item" onclick="navigate('documents',this)">
+        <span class="material-icons">folder_open</span>
+        <span class="nav-label">Documents</span>
+      </div>
+      <div class="nav-item" onclick="navigate('reports',this)">
+        <span class="material-icons">bar_chart</span>
+        <span class="nav-label">Reports</span>
+      </div>
+      <div class="nav-section-title">SYSTEM</div>
+      <div class="nav-item" onclick="navigate('settings',this)">
+        <span class="material-icons">settings</span>
+        <span class="nav-label">Settings</span>
+      </div>
+    </div>
+
+    <div class="sidenav-footer">
+      <div class="user-info">
+        <div class="avatar">AD</div>
+        <div class="user-info-text">
+          <div class="user-name">Admin User</div>
+          <div class="user-role">Super Admin</div>
+        </div>
+      </div>
+    </div>
+  </nav>
