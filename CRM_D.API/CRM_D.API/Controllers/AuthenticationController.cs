@@ -41,6 +41,10 @@ namespace CRM_D.API.Controllers
             ApiResponse<ResponseModel> ApiResponse = new ApiResponse<ResponseModel>();
             ResponseModel response = new ResponseModel();
             response = await _authInfoBLL.AddEditUser(model);
+            if(response == null)
+            {
+                return BadRequest("UserName Already Exists");
+            }
             StatusMessage = "Data has been Saved Successfully";
             ApiResponse = new ApiResponse<ResponseModel> { Data = response , StatusMessage = StatusMessage, Result = 1, StatusCode = HttpStatusCode.OK };
 
