@@ -26,8 +26,7 @@ namespace CRM_D.DLL.Services
                 param.Add("Email", model.Email);
                 param.Add("Password", model.Password);
                 param.Add("UserName", model.UserName);
-                param.Add("Department", model.Department);
-                param.Add("Role", model.Role);
+                param.Add("Designation", model.Designation);
                 param.Add("IsActive", model.IsActive);
 
                 IDapperExecuteServiceFromAnyDB<ResponseModel> svr = new DapperExecuteServiceFromAnyDB<ResponseModel>();
