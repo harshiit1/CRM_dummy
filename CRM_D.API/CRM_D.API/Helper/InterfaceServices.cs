@@ -1,4 +1,5 @@
 ﻿using CRM_D.BLL.Interfaces;
+using CRM_D.DLL.Entities;
 using CRM_D.DLL.Services;
 
 namespace CRM_D.API.Helper
@@ -7,7 +8,8 @@ namespace CRM_D.API.Helper
     {
         public static void AddInterfaceServices(IServiceCollection services)
         {
-            services.AddSingleton<IAuthentication, AuthenticationServices>();
+            services.AddScoped<ErrorLogServices>();
+            services.AddScoped<IAuthentication, AuthenticationServices>();
         }
     }
 }

@@ -4,46 +4,49 @@ using CRM_D.Common.CRMModels.Authentication;
 using CRM_D.DLL.Dapper;
 using CRM_D.DLL.Entities;
 using Dapper;
+using Microsoft.Identity.Client;
 namespace CRM_D.DLL.Services
 {
     public class AuthenticationServices : IAuthentication
     {
-        private ErrorLogServices _errorLog;
+        private readonly ErrorLogServices _errorLog;
 
-        public AuthenticationServices()
+        public AuthenticationServices(ErrorLogServices errorLog)
         {
-            _errorLog = new ErrorLogServices();
+            _errorLog = errorLog;
         }
-        public ResponseModel AddEditUser(UserMaster model)
+        public async Task<ResponseModel> AddEditUser(UserMaster model)
         {
             string procName = "USP_AddEditUserLogin";
             ResponseModel returnData = new ResponseModel();
             try
             {
+                model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
                 var param = new DynamicParameters();
                 param.Add("Email", model.Email);
                 param.Add("Password", model.Password);
                 param.Add("UserName", model.UserName);
                 param.Add("Department", model.Department);
-                param.Add("Designation", model.Designation);
-                param.Add("MobileNo", model.MobieNo);
-                param.Add("Address", model.Address);
+                param.Add("Role", model.Role);
                 param.Add("IsActive", model.IsActive);
-                param.Add("Flag", model.Flag);
 
                 IDapperExecuteServiceFromAnyDB<ResponseModel> svr = new DapperExecuteServiceFromAnyDB<ResponseModel>();
                 returnData = svr.ExecuteCRUDSP(procName, param);
             }
             catch (Exception ex)
             {
-                string path = "proc:USP_AddEditUserLogin";
                 _errorLog.InsertErrorLog(new ErrorLogModel()
                 {
                     IsDBError = false,
                     Error_Message = ex.Message,
-                    Error_Procedure = path,
+                    Error_Procedure = "proc:USP_AddEditUserLogin",
                     Error_Trace = ex.StackTrace
                 });
+                return new ResponseModel
+                {
+                    StatusCode = 0,
+                    ResponseMessage = "Internal server error"
+                };
 
             }
             return returnData;

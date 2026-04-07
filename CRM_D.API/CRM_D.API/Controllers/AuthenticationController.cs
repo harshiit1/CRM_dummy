@@ -1,7 +1,6 @@
 ﻿using CRM_D.BLL.Interfaces;
 using CRM_D.Common.CommonModels;
 using CRM_D.Common.CRMModels.Authentication;
-using CRM_D.Common.CRMModels.User;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -27,21 +26,25 @@ namespace CRM_D.API.Controllers
         //public async Task<IActionResult> SignInApi([FromBody] SignInModel model)
         //{
         //    string StatusMessage = string.Empty;
-        //    return false;
+            
         //}
 
         [HttpPost]
         [Route("AddEditUserDetails")]
-        public async Task<IActionResult> AddEditUserDetails(UserMaster model)
+        public async Task<IActionResult> AddEditUserDetails([FromBody] UserMaster model)
         {
+
+            if (model == null) return BadRequest("Invalid User Data");
+            if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password)) return BadRequest("Email and Password Required");
+
             string StatusMessage = string.Empty;
             ApiResponse<ResponseModel> ApiResponse = new ApiResponse<ResponseModel>();
             ResponseModel response = new ResponseModel();
-            response = _authInfoBLL.AddEditUser(model);
-            ApiResponse = new ApiResponse<ResponseModel> { Data = response , StatusMessage = "Data fetched Successfully", Result = 1, StatusCode = HttpStatusCode.OK };
+            response = await _authInfoBLL.AddEditUser(model);
+            StatusMessage = "Data has been Saved Successfully";
+            ApiResponse = new ApiResponse<ResponseModel> { Data = response , StatusMessage = StatusMessage, Result = 1, StatusCode = HttpStatusCode.OK };
 
             return Ok(ApiResponse);
         }
-
     }
 }
