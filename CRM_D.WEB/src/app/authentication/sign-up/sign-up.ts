@@ -1,3 +1,4 @@
+import { CommonService } from './../../core/services/common-service';
 import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../shared-module/shared-module';
 import { SharedComponentsModule } from '../../shared-module/shared-components';
@@ -13,10 +14,11 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms
 })
 export class SignUpComponent implements OnInit {
   signUpForm!: UntypedFormGroup;
-  hidePassword = true
+  hidePassword = true;
   constructor(
     public authFacade: AuthenticationFacade,
     public fb: UntypedFormBuilder,
+    public commonService: CommonService,
   ) {}
   ngOnInit(): void {
     this.onInit();
@@ -35,9 +37,17 @@ export class SignUpComponent implements OnInit {
     this.authFacade.redirectToSignInPage();
   }
 
-  registerBtnClick(){
+  registerBtnClick() {
+    if (this.signUpForm.invalid) {
+      this.commonService.showNotification(
+        'snackbar-danger',
+        'One or More required fields are empty',
+        'top',
+        'right',
+      );
+    }
     const payload = this.signUpForm.getRawValue();
-    console.log(payload)
+    console.log(payload);
     this.authFacade.registerUser(payload);
   }
 }

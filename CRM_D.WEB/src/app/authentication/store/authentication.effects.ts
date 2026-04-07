@@ -6,6 +6,7 @@ import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { of } from 'rxjs';
+import { CommonService } from '../../core/services/common-service';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -14,6 +15,7 @@ export class AuthenticationEffects {
   private router = inject(Router);
   private store = inject(Store);
   private authService = inject(AuthService);
+  private commonService = inject(CommonService);
 
   RedirectToDasboardPage$ = createEffect(
     () =>
@@ -56,5 +58,36 @@ export class AuthenticationEffects {
         );
       }),
     ),
+  );
+  RegisterUserSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.RegisterUserSuccess),
+      tap((action) => {
+        this.commonService.showNotification(
+          'snackbar-success',
+          action.response.data.responseMessage,
+          'top',
+          'right',
+        );
+      }),
+      map(() => {
+        return AuthenticationActions.RedirectToSignInPage();
+      }),
+    ),
+  );
+  RegisterUserFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthenticationActions.RegisterUserFailure),
+        tap((action) => {
+          this.commonService.showNotification(
+            'snackbar-danger',
+            'Failed to save data',
+            'top',
+            'right',
+          );
+        }),
+      ),
+    { dispatch: false },
   );
 }
