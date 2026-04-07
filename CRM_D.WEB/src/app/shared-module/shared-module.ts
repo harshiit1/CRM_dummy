@@ -17,6 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatBadgeModule,
     MatTooltipModule,
     MatDividerModule,
+    MatSnackBarModule,
   ],
   exports: [
     CommonModule,
@@ -60,6 +62,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatBadgeModule,
     MatTooltipModule,
     MatDividerModule,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {}
