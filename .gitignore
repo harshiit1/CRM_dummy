@@ -19,3 +19,5 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+/CRM_D.API/CRM_D.API/CRM_D.API.slnx
+/CRM_D.API/CRM_D.API/CRM_D.API.csproj.Backup.tmp
