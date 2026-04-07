@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as AuthenticationActions from './authentication.actions';
+import { IUserRegister } from '../models/user-models';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,6 +14,9 @@ export class AuthenticationFacade {
   }
   redirectToSignInPage() {
     this.store.dispatch(AuthenticationActions.RedirectToSignInPage());
+  }
+  registerUser(payload: IUserRegister) {
+    this.store.dispatch(AuthenticationActions.RegisterUser({payload}));
   }
   constructor(public store: Store) {}
 }
