@@ -9,6 +9,7 @@ namespace CRM_D.API.Helper
         public static void AddInterfaceServices(IServiceCollection services)
         {
             services.AddScoped<ErrorLogServices>();
+            services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IAuthentication, AuthenticationServices>();
         }
     }
