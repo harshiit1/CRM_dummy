@@ -9,18 +9,18 @@ namespace CRM_D.Common.CRMModels.User
     {
         public int UserId { get; set; }
         public string UserName { get; set; }
-        public decimal EMP_CODE { get; set; }
-        public string EMP_NAME { get; set; }
-        public string DESIGNATION { get; set; }
-        public string CONTACT_NO { get; set; }
+        public int EmpCode { get; set; }
+        public string EmpName { get; set; }
+        public string Designation { get; set; }
+        public string ContactNo { get; set; }
         public string ADD1 { get; set; }
         public string ADD2 { get; set; }
-        public string CITY { get; set; }
-        public string STATE { get; set; }
-        public string HOMEPH { get; set; }
-        public bool? WORKING { get; set; }
-        public string EMAIL_ADD { get; set; }
-        public string PICTURE { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string HomePh { get; set; }
+        public bool? Working { get; set; }
+        public string Email { get; set; }
+        public string Picture { get; set; }
         public string StatusMessage { get; set; }
         public List<NgMenuMaster> UserMenuOptions { get; set; }
     }
