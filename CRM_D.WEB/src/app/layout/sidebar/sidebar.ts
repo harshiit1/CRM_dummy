@@ -11,9 +11,16 @@ export class SidebarComponent {
 
   @Output() collapsedEvent = new EventEmitter<boolean>();
 
-  toggleSidenav(event:Event) {
+  toggleSidenav(event: Event) {
     event?.stopPropagation();
     this.sidenavCollapsed = !this.sidenavCollapsed;
     this.collapsedEvent.emit(this.sidenavCollapsed);
   }
+
+  openDashboardPage() {}
+  openCustomerPage() {}
+  openReportsPage() {}
+  openEmployeesPage() {}
+  openSettingsPage() {}
+  openDocumentsPage() {}
 }

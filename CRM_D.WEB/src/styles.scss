@@ -154,7 +154,7 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 32px;
+  margin-bottom: 14px;
 }
 .auth-logo-icon {
   width: 40px;
@@ -176,12 +176,18 @@ button {
   font-family: var(--font-display);
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
 }
 .auth-subtitle {
   color: var(--text-secondary);
   margin-bottom: 28px;
   font-size: 13.5px;
+}
+.error-text {
+  position: relative;
+  top: -18px;
+  font-size: smaller;
+  color: red;
 }
 
 /* ─── MAT FORM FIELD (simulated) ────────────────────────────── */
@@ -248,8 +254,8 @@ button {
   margin-top: 4px;
 }
 
-.mat-full-width{
-    width: 100%;
+.mat-full-width {
+  width: 100%;
 }
 /* ─── CHECKBOX ───────────────────────────────────────────────── */
 .mat-checkbox {
@@ -1218,5 +1224,3 @@ button {
     padding: 28px;
   }
 }
-
-

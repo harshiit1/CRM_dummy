@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../shared-module/shared-module';
 import { SharedComponentsModule } from '../../shared-module/shared-components';
 import { AuthenticationFacade } from '../store/authentication.facade';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,6 +13,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   signUpForm!: UntypedFormGroup;
+  hidePassword = true
   constructor(
     public authFacade: AuthenticationFacade,
     public fb: UntypedFormBuilder,
@@ -22,13 +23,21 @@ export class SignUpComponent implements OnInit {
   }
   onInit() {
     this.signUpForm = this.fb.group({
-      Name: [''],
-      Email: [''],
-      Password: [''],
-      ConfirmPassword: [''],
+      UserName: ['', Validators.required],
+      Email: ['', Validators.required, Validators.email],
+      Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required],
+      Department: ['', Validators.required],
+      Role: ['', Validators.required],
     });
   }
   showAuthPage() {
     this.authFacade.redirectToSignInPage();
+  }
+
+  registerBtnClick(){
+    const payload = this.signUpForm.getRawValue();
+    console.log(payload)
+    this.authFacade.registerUser(payload);
   }
 }
