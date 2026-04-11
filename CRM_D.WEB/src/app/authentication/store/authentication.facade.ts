@@ -1,11 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { inject, Injectable } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import * as AuthenticationSelector from './authentication.selectors';
 import * as AuthenticationActions from './authentication.actions';
-import { IUserRegister } from '../models/user-models';
+import { IUserLogin, IUserRegister } from '../models/user-models';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationFacade {
+  store = inject(Store);
+  loggedInUserDetail$ = this.store.pipe(select(AuthenticationSelector.selectedUserDetail));
+
   redirectToDashboard() {
     this.store.dispatch(AuthenticationActions.RedirectToDashboard());
   }
@@ -16,7 +20,9 @@ export class AuthenticationFacade {
     this.store.dispatch(AuthenticationActions.RedirectToSignInPage());
   }
   registerUser(payload: IUserRegister) {
-    this.store.dispatch(AuthenticationActions.RegisterUser({payload}));
+    this.store.dispatch(AuthenticationActions.RegisterUser({ payload }));
   }
-  constructor(public store: Store) {}
+  loginUser(payload: IUserLogin) {
+    this.store.dispatch(AuthenticationActions.LoginUser({ payload }));
+  }
 }

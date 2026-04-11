@@ -13,16 +13,23 @@
 
       <form action="" [formGroup]="loginForm!">
         <mat-form-field appearance="outline" class="mat-full-width">
-          <mat-label>Email address</mat-label>
-          <input matInput type="email" formControlName="Email" placeholder="name@company.com" />
-          <mat-icon matPrefix>email</mat-icon>
+          <mat-label>User Name</mat-label>
+          <input matInput type="text" formControlName="UserName" />
+          <mat-icon matPrefix>person</mat-icon>
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="mat-full-width">
           <mat-label>Password</mat-label>
           <mat-icon matPrefix>lock</mat-icon>
-          <input matInput type="password" formControlName="Password" />
-          <mat-icon matSuffix>visibility_off</mat-icon>
+          <input
+            matInput
+            type="password"
+            formControlName="Password"
+            [type]="hidePassword ? 'password' : 'text'"
+          />
+          <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{
+            hidePassword ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
         </mat-form-field>
 
         <div class="auth-forgot">
@@ -36,7 +43,7 @@
           <span>Remember me for 30 days</span>
         </label>
 
-        <button class="mat-btn mat-btn-primary mat-btn-full" (click)="login()">
+        <button class="mat-btn mat-btn-primary mat-btn-full" (click)="loginBtnClick()">
           <span class="material-icons">login</span> Sign In
         </button>
       </form>

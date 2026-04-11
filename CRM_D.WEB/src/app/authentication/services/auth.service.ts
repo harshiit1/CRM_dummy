@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUserRegister } from '../models/user-models';
+import { IUserLogin, IUserRegister } from '../models/user-models';
 import { map } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 
@@ -15,7 +15,16 @@ export class AuthService {
       .post<any>(`${environment.apiUrl}/Authentication/AddEditUserDetails`, payload)
       .pipe(
         map((resp) => {
-          return resp.Data;
+          return resp.data;
+        }),
+      );
+  }
+  loginUser(payload: IUserLogin) {
+    return this.http
+      .post<any>(`${environment.apiUrl}/Authentication/SignInUser`, payload)
+      .pipe(
+        map((resp) => {
+          return resp.data;
         }),
       );
   }

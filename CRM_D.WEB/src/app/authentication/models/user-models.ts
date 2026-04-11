@@ -8,3 +8,7 @@ export interface IUserRegister {
   CreatedOn: Date;
   ModifiedOn: Date;
 }
+export interface IUserLogin {
+  UserName: string;
+  Password: string;
+}
