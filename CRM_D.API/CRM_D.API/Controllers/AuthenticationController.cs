@@ -67,7 +67,7 @@ namespace CRM_D.API.Controllers
             userInfoData = await _authInfoBLL.doLogin(model);
             if (userInfoData == null) return null;
             var token = _jwtService.GenerateAccessToken(userInfoData.UserName, userInfoData.Designation);
-            string StatusMessage = "Data Fetched Successfully";
+            string StatusMessage = "Logged In Successfully";
             ApiResponse = new ApiResponse<UserInfoDataModel> { Data = userInfoData, StatusMessage = StatusMessage, Result = 1, StatusCode = HttpStatusCode.OK, TokenKey = token};
 
             return Ok(ApiResponse);
