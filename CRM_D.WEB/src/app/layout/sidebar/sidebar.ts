@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, Output, viewChild, ViewChild } from '@angular/core';
+import { SharedFacade } from '../../shared/store/shared.facade';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,8 +9,8 @@ import { Component, ElementRef, EventEmitter, Output, viewChild, ViewChild } fro
 })
 export class SidebarComponent {
   sidenavCollapsed: boolean = false;
-
   @Output() collapsedEvent = new EventEmitter<boolean>();
+  constructor(public sharedFacade: SharedFacade) {}
 
   toggleSidenav(event: Event) {
     event?.stopPropagation();
@@ -17,8 +18,12 @@ export class SidebarComponent {
     this.collapsedEvent.emit(this.sidenavCollapsed);
   }
 
-  openDashboardPage() {}
-  openCustomerPage() {}
+  openDashboardPage() {
+    this.sharedFacade.redirectToDashboard();
+  }
+  openCustomersPage() {
+    this.sharedFacade.redirectToCustomers();
+  }
   openReportsPage() {}
   openEmployeesPage() {}
   openSettingsPage() {}

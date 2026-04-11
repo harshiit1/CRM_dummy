@@ -1,0 +1,103 @@
+<div>
+  <h3 mat-dialog-title id="emp-dialog-title">Edit Employee</h3>
+</div>
+
+<mat-dialog-content class="dialog-content">
+  <form class="form-grid" [formGroup]="userDetailForm">
+    <div class="mat-form-field">
+      <label>Full Name</label>
+      <div class="mat-input-wrap">
+        <input formControlName="FullName" type="text" placeholder="Jane" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Email</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">email</span>
+        <input formControlName="Email" type="email" placeholder="jane@crm.com" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Department</label>
+      <div class="mat-input-wrap">
+        <select formControlName="Department">
+          @for (dept of departments; track dept) {
+            <option>{{ dept }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Designation</label>
+      <div class="mat-input-wrap">
+        <select name="" id="" formControlName="Designation">
+          @for (desg of designation; track desg) {
+            <option>{{ desg }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Phone</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">phone</span>
+        <input formControlName="Phone" type="tel" placeholder="+91 8847096774" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Address</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">home</span>
+        <input formControlName="Address" type="text" placeholder="#69..." />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>City</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">location_city</span>
+        <input formControlName="City" type="text" placeholder="Ludhiana" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>State</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">map</span>
+        <input formControlName="State" type="text" placeholder="Punjab" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Status</label>
+      <div class="mat-input-wrap">
+        <select formControlName="Status">
+          @for (status of Status; track status) {
+            <option>{{ status }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Start Date</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">calendar_today</span>
+        <input formControlName="StartDate" type="date" />
+      </div>
+    </div>
+
+    <button
+      class="mat-btn mat-btn-primary"
+      (click)="saveEmployeeDetail()"
+      [disabled]="userDetailForm.invalid"
+    >
+      <span class="material-icons">save</span> Save Employee
+    </button>
+  </form>
+</mat-dialog-content>

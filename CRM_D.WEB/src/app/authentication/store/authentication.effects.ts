@@ -59,6 +59,21 @@ export class AuthenticationEffects {
       }),
     ),
   );
+
+  LoginUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.LoginUser),
+      mergeMap((action) => {
+        return this.authService.loginUser(action.payload).pipe(
+          map((response) => {
+            return AuthenticationActions.LoginUserSuccess({ response });
+          }),
+          catchError((error) => of(AuthenticationActions.LoginUserFailure({ error }))),
+        );
+      }),
+    ),
+  );
+
   RegisterUserSuccess$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthenticationActions.RegisterUserSuccess),
@@ -83,6 +98,38 @@ export class AuthenticationEffects {
           this.commonService.showNotification(
             'snackbar-danger',
             'Failed to save data',
+            'top',
+            'right',
+          );
+        }),
+      ),
+    { dispatch: false },
+  );
+
+  LoginUserSuccess$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthenticationActions.LoginUserSuccess),
+      tap((action) => {
+        this.commonService.showNotification(
+          'snackbar-success',
+          'User Logged In Successfully',
+          'top',
+          'right',
+        );
+      }),
+      map(() => {
+        return AuthenticationActions.RedirectToDashboard();
+      }),
+    ),
+  );
+  LoginUserFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthenticationActions.LoginUserFailure),
+        tap((action) => {
+          this.commonService.showNotification(
+            'snackbar-danger',
+            'An error occured while Logging In',
             'top',
             'right',
           );

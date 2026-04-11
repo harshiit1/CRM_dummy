@@ -1,1 +1,73 @@
-<p>customer-form works!</p>
+<div class="dialog-title">
+  <h3 id="cust-dialog-title" mat-dialog-title>Add Customer</h3>
+
+  <button class="mat-btn-icon mat-btn" (click)="closeDialog()">
+    <span class="material-icons">close</span>
+  </button>
+</div>
+
+<mat-dialog-content class="dialog-content">
+  <form class="form-grid" [formGroup]="customerForm">
+    <div class="mat-form-field">
+      <label>Company Name</label>
+      <div class="mat-input-wrap">
+        <input type="text" placeholder="ACME Corp" formControlName="CompName" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Email</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">email</span>
+        <input type="email" placeholder="john@company.com" formControlName="Email" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Phone</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">phone</span>
+        <input type="tel" placeholder="+91 55500 00000" formControlName="Phone" />
+      </div>
+    </div>
+
+    <div class="mat-form-field">
+      <label>Status</label>
+      <div class="mat-input-wrap">
+        <select formControlName="Status">
+          @for (status of customerStatus; track status) {
+            <option [value]="status">{{ status }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="mat-form-field full">
+      <label>Address</label>
+      <div class="mat-input-wrap">
+        <span class="material-icons mat-icon">location_on</span>
+        <input type="text" placeholder="123 Main St" formControlName="Address" />
+      </div>
+    </div>
+
+    <div class="mat-form-field full">
+      <label>Remarks</label>
+      <div class="mat-input-wrap">
+        <textarea rows="3" formControlName="Remarks" placeholder="Remarks..."></textarea>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div class="dialog-actions">
+  <button class="mat-btn mat-btn-stroked" (click)="closeDialog()">Cancel</button>
+
+  <button
+    class="mat-btn mat-btn-primary"
+    (click)="saveCustomer()"
+    [disabled]="customerForm.invalid"
+  >
+    <span class="material-icons">save</span>
+    Save Customer
+  </button>
+</div>

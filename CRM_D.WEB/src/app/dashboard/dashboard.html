@@ -1,661 +1,428 @@
 <!-- ┌─────────── DASHBOARD ───────────────────────────┐ -->
-<section id="view-dashboard" class="app-view" style="display:block">
-    <div class="page-header">
+<section id="view-dashboard" class="app-view" style="display: block">
+  <div class="page-header">
     <div>
-        <h1 class="page-title">Dashboard</h1>
-        <p class="page-subtitle">Welcome back, Admin! Here's what's happening.</p>
+      <h1 class="page-title">Dashboard</h1>
+      <p class="page-subtitle">Welcome back, {{ userData?.fullName ?? 'User' }}! Here's what's happening.</p>
     </div>
     <button class="mat-btn mat-btn-stroked">
-        <span class="material-icons">calendar_today</span> This Month
+      <span class="material-icons">calendar_today</span> This Month
     </button>
-    </div>
+  </div>
 
-    <div class="stats-grid">
+  <div class="stats-grid">
     <div class="stat-card blue">
-        <div class="stat-icon blue"><span class="material-icons">people</span></div>
-        <div class="stat-label">Total Customers</div>
-        <div class="stat-value">2,847</div>
-        <div class="stat-change up"><span class="material-icons" style="font-size:14px">trending_up</span>+12.5% this month</div>
+      <div class="stat-icon blue"><span class="material-icons">people</span></div>
+      <div class="stat-label">Total Customers</div>
+      <div class="stat-value">2,847</div>
+      <div class="stat-change up">
+        <span class="material-icons" style="font-size: 14px">trending_up</span>+12.5% this month
+      </div>
     </div>
     <div class="stat-card cyan">
-        <div class="stat-icon cyan"><span class="material-icons">badge</span></div>
-        <div class="stat-label">Total Employees</div>
-        <div class="stat-value">143</div>
-        <div class="stat-change up"><span class="material-icons" style="font-size:14px">trending_up</span>+3 this month</div>
+      <div class="stat-icon cyan"><span class="material-icons">badge</span></div>
+      <div class="stat-label">Total Employees</div>
+      <div class="stat-value">143</div>
+      <div class="stat-change up">
+        <span class="material-icons" style="font-size: 14px">trending_up</span>+3 this month
+      </div>
     </div>
     <div class="stat-card green">
-        <div class="stat-icon green"><span class="material-icons">track_changes</span></div>
-        <div class="stat-label">Active Leads</div>
-        <div class="stat-value">389</div>
-        <div class="stat-change down"><span class="material-icons" style="font-size:14px">trending_down</span>-4.1% this month</div>
+      <div class="stat-icon green"><span class="material-icons">track_changes</span></div>
+      <div class="stat-label">Active Leads</div>
+      <div class="stat-value">389</div>
+      <div class="stat-change down">
+        <span class="material-icons" style="font-size: 14px">trending_down</span>-4.1% this month
+      </div>
     </div>
     <div class="stat-card amber">
-        <div class="stat-icon amber"><span class="material-icons">attach_money</span></div>
-        <div class="stat-label">Monthly Revenue</div>
-        <div class="stat-value">$94.2K</div>
-        <div class="stat-change up"><span class="material-icons" style="font-size:14px">trending_up</span>+8.3% this month</div>
+      <div class="stat-icon amber"><span class="material-icons">attach_money</span></div>
+      <div class="stat-label">Monthly Revenue</div>
+      <div class="stat-value">$94.2K</div>
+      <div class="stat-change up">
+        <span class="material-icons" style="font-size: 14px">trending_up</span>+8.3% this month
+      </div>
     </div>
-    </div>
+  </div>
 
-    <!-- Revenue Chart + Quick Stats -->
-    <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:24px">
+  <!-- Revenue Chart + Quick Stats -->
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px; margin-bottom: 24px">
     <div class="mat-card">
-        <div class="mat-card-header">
+      <div class="mat-card-header">
         <div>
-            <div class="mat-card-title">Revenue Overview</div>
-            <div class="mat-card-subtitle">Monthly performance · 2025</div>
+          <div class="mat-card-title">Revenue Overview</div>
+          <div class="mat-card-subtitle">Monthly performance · 2025</div>
         </div>
         <div class="chip-group">
-            <div class="chip active" style="font-size:11px;padding:3px 10px">Monthly</div>
-            <div class="chip" style="font-size:11px;padding:3px 10px">Yearly</div>
+          <div class="chip active" style="font-size: 11px; padding: 3px 10px">Monthly</div>
+          <div class="chip" style="font-size: 11px; padding: 3px 10px">Yearly</div>
         </div>
-        </div>
-        <div class="mat-card-content">
+      </div>
+      <div class="mat-card-content">
         <div class="chart-row" id="revenue-chart"></div>
-        <div style="display:flex;justify-content:space-between;margin-top:8px">
-            <span class="text-sm text-secondary">Jan</span><span class="text-sm text-secondary">Feb</span>
-            <span class="text-sm text-secondary">Mar</span><span class="text-sm text-secondary">Apr</span>
-            <span class="text-sm text-secondary">May</span><span class="text-sm text-secondary">Jun</span>
-            <span class="text-sm text-secondary">Jul</span><span class="text-sm text-secondary">Aug</span>
-            <span class="text-sm text-secondary">Sep</span><span class="text-sm text-secondary">Oct</span>
-            <span class="text-sm text-secondary">Nov</span><span class="text-sm text-secondary">Dec</span>
+        <div style="display: flex; justify-content: space-between; margin-top: 8px">
+          <span class="text-sm text-secondary">Jan</span
+          ><span class="text-sm text-secondary">Feb</span>
+          <span class="text-sm text-secondary">Mar</span
+          ><span class="text-sm text-secondary">Apr</span>
+          <span class="text-sm text-secondary">May</span
+          ><span class="text-sm text-secondary">Jun</span>
+          <span class="text-sm text-secondary">Jul</span
+          ><span class="text-sm text-secondary">Aug</span>
+          <span class="text-sm text-secondary">Sep</span
+          ><span class="text-sm text-secondary">Oct</span>
+          <span class="text-sm text-secondary">Nov</span
+          ><span class="text-sm text-secondary">Dec</span>
         </div>
-        </div>
+      </div>
     </div>
     <div class="mat-card">
-        <div class="mat-card-header">
+      <div class="mat-card-header">
         <div class="mat-card-title">Lead Status</div>
+      </div>
+      <div class="mat-card-content">
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px">
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px">
+              <span style="font-size: 13px">New</span
+              ><span style="font-size: 13px; font-weight: 600">142</span>
+            </div>
+            <div
+              style="
+                height: 6px;
+                background: var(--surface-3);
+                border-radius: 3px;
+                overflow: hidden;
+              "
+            >
+              <div
+                style="height: 100%; width: 65%; background: var(--primary); border-radius: 3px"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px">
+              <span style="font-size: 13px">Contacted</span
+              ><span style="font-size: 13px; font-weight: 600">98</span>
+            </div>
+            <div
+              style="
+                height: 6px;
+                background: var(--surface-3);
+                border-radius: 3px;
+                overflow: hidden;
+              "
+            >
+              <div
+                style="height: 100%; width: 45%; background: var(--accent); border-radius: 3px"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px">
+              <span style="font-size: 13px">Qualified</span
+              ><span style="font-size: 13px; font-weight: 600">76</span>
+            </div>
+            <div
+              style="
+                height: 6px;
+                background: var(--surface-3);
+                border-radius: 3px;
+                overflow: hidden;
+              "
+            >
+              <div
+                style="height: 100%; width: 35%; background: var(--success); border-radius: 3px"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px">
+              <span style="font-size: 13px">Proposal</span
+              ><span style="font-size: 13px; font-weight: 600">52</span>
+            </div>
+            <div
+              style="
+                height: 6px;
+                background: var(--surface-3);
+                border-radius: 3px;
+                overflow: hidden;
+              "
+            >
+              <div
+                style="height: 100%; width: 24%; background: var(--warning); border-radius: 3px"
+              ></div>
+            </div>
+          </div>
+          <div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px">
+              <span style="font-size: 13px">Closed Won</span
+              ><span style="font-size: 13px; font-weight: 600">21</span>
+            </div>
+            <div
+              style="
+                height: 6px;
+                background: var(--surface-3);
+                border-radius: 3px;
+                overflow: hidden;
+              "
+            >
+              <div style="height: 100%; width: 10%; background: #a855f7; border-radius: 3px"></div>
+            </div>
+          </div>
         </div>
-        <div class="mat-card-content">
-        <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
-            <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="font-size:13px">New</span><span style="font-size:13px;font-weight:600">142</span>
-            </div>
-            <div style="height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden">
-                <div style="height:100%;width:65%;background:var(--primary);border-radius:3px"></div>
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="font-size:13px">Contacted</span><span style="font-size:13px;font-weight:600">98</span>
-            </div>
-            <div style="height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden">
-                <div style="height:100%;width:45%;background:var(--accent);border-radius:3px"></div>
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="font-size:13px">Qualified</span><span style="font-size:13px;font-weight:600">76</span>
-            </div>
-            <div style="height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden">
-                <div style="height:100%;width:35%;background:var(--success);border-radius:3px"></div>
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="font-size:13px">Proposal</span><span style="font-size:13px;font-weight:600">52</span>
-            </div>
-            <div style="height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden">
-                <div style="height:100%;width:24%;background:var(--warning);border-radius:3px"></div>
-            </div>
-            </div>
-            <div>
-            <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-                <span style="font-size:13px">Closed Won</span><span style="font-size:13px;font-weight:600">21</span>
-            </div>
-            <div style="height:6px;background:var(--surface-3);border-radius:3px;overflow:hidden">
-                <div style="height:100%;width:10%;background:#a855f7;border-radius:3px"></div>
-            </div>
-            </div>
-        </div>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 
-    <!-- Recent Customers Table -->
-    <div class="mat-card">
+  <!-- Recent Customers Table -->
+  <div class="mat-card">
     <div class="table-toolbar">
-        <div class="table-title">Recent Customers</div>
-        <div style="display:flex;align-items:center;gap:10px">
+      <div class="table-title">Recent Customers</div>
+      <div style="display: flex; align-items: center; gap: 10px">
         <div class="search-field">
-            <span class="material-icons">search</span>
-            <input id="dash-search" placeholder="Search customers…" oninput="filterDashTable(this.value)" />
+          <span class="material-icons">search</span>
+          <input
+            id="dash-search"
+            placeholder="Search customers…"
+            oninput="filterDashTable(this.value)"
+          />
         </div>
-        <button class="mat-btn mat-btn-primary" onclick="navigate('customers',document.querySelector('[onclick*=customers]'))">View All</button>
-        </div>
+        <button
+          class="mat-btn mat-btn-primary"
+          onclick="navigate('customers', document.querySelector('[onclick*=customers]'))"
+        >
+          View All
+        </button>
+      </div>
     </div>
     <table class="mat-table" id="dash-table">
-        <thead>
+      <thead>
         <tr>
-            <th class="sortable">Name</th>
-            <th class="sortable">Email</th>
-            <th>Phone</th>
-            <th>Status</th>
-            <th>Created</th>
+          <th class="sortable">Name</th>
+          <th class="sortable">Email</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Created</th>
         </tr>
-        </thead>
-        <tbody id="dash-tbody"></tbody>
+      </thead>
+      <tbody id="dash-tbody"></tbody>
     </table>
     <div class="mat-paginator">
-        <span>Rows per page: 5</span>
-        <span id="dash-page-info">1–5 of 12</span>
-        <div class="paginator-pages">
+      <span>Rows per page: 5</span>
+      <span id="dash-page-info">1–5 of 12</span>
+      <div class="paginator-pages">
         <button class="page-btn" disabled>‹</button>
         <button class="page-btn active">1</button>
         <button class="page-btn">2</button>
         <button class="page-btn">3</button>
         <button class="page-btn">›</button>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </section>
 
 <!-- ┌─────────── CUSTOMERS ───────────────────────────┐ -->
-<section id="view-customers" class="app-view" style="display:none">
-    <div class="page-header">
-    <div>
-        <h1 class="page-title">Customers</h1>
-        <p class="page-subtitle">Manage your customer base</p>
-    </div>
-    <button class="mat-btn mat-btn-primary" onclick="openDialog('customer-dialog','add')">
-        <span class="material-icons">person_add</span> Add Customer
-    </button>
-    </div>
-    <div class="mat-card">
-    <div class="table-toolbar">
-        <div class="chip-group">
-        <div class="chip active">All <strong style="margin-left:4px">2,847</strong></div>
-        <div class="chip">Active</div>
-        <div class="chip">Inactive</div>
-        <div class="chip">Lead</div>
-        </div>
-        <div class="search-field">
-        <span class="material-icons">search</span>
-        <input placeholder="Search customers…" oninput="filterTable('cust-tbody',this.value)" />
-        </div>
-    </div>
-    <table class="mat-table">
-        <thead>
-        <tr>
-            <th class="sortable">Customer Name</th>
-            <th class="sortable">Email</th>
-            <th>Phone</th>
-            <th>Company</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody id="cust-tbody"></tbody>
-    </table>
-    <div class="mat-paginator">
-        <span>Rows per page: 10</span>
-        <span>1–10 of 2,847</span>
-        <div class="paginator-pages">
-        <button class="page-btn" disabled>‹</button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">…</button>
-        <button class="page-btn">285</button>
-        <button class="page-btn">›</button>
-        </div>
-    </div>
-    </div>
-</section>
 
 <!-- ┌─────────── EMPLOYEES ───────────────────────────┐ -->
-<section id="view-employees" class="app-view" style="display:none">
-    <div class="page-header">
+<section id="view-employees" class="app-view" style="display: none">
+  <div class="page-header">
     <div>
-        <h1 class="page-title">Employees</h1>
-        <p class="page-subtitle">Manage your team members</p>
+      <h1 class="page-title">Employees</h1>
+      <p class="page-subtitle">Manage your team members</p>
     </div>
-    <button class="mat-btn mat-btn-primary" onclick="openDialog('employee-dialog','add')">
-        <span class="material-icons">person_add</span> Add Employee
+    <button class="mat-btn mat-btn-primary" onclick="openDialog('employee-dialog', 'add')">
+      <span class="material-icons">person_add</span> Add Employee
     </button>
-    </div>
-    <div class="mat-card">
+  </div>
+  <div class="mat-card">
     <div class="table-toolbar">
-        <div class="chip-group">
-        <div class="chip active">All <strong style="margin-left:4px">143</strong></div>
+      <div class="chip-group">
+        <div class="chip active">All <strong style="margin-left: 4px">143</strong></div>
         <div class="chip">Sales</div>
         <div class="chip">Engineering</div>
         <div class="chip">Support</div>
-        </div>
-        <div class="search-field">
+      </div>
+      <div class="search-field">
         <span class="material-icons">search</span>
-        <input placeholder="Search employees…" oninput="filterTable('emp-tbody',this.value)" />
-        </div>
+        <input placeholder="Search employees…" oninput="filterTable('emp-tbody', this.value)" />
+      </div>
     </div>
     <table class="mat-table">
-        <thead>
+      <thead>
         <tr>
-            <th>Employee</th>
-            <th class="sortable">Department</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Role</th>
-            <th>Status</th>
-            <th>Actions</th>
+          <th>Employee</th>
+          <th class="sortable">Department</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
         </tr>
-        </thead>
-        <tbody id="emp-tbody"></tbody>
+      </thead>
+      <tbody id="emp-tbody"></tbody>
     </table>
     <div class="mat-paginator">
-        <span>Rows per page: 10</span>
-        <span>1–10 of 143</span>
-        <div class="paginator-pages">
+      <span>Rows per page: 10</span>
+      <span>1–10 of 143</span>
+      <div class="paginator-pages">
         <button class="page-btn" disabled>‹</button>
         <button class="page-btn active">1</button>
         <button class="page-btn">2</button>
         <button class="page-btn">›</button>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </section>
 
 <!-- ┌─────────── DOCUMENTS ───────────────────────────┐ -->
-<section id="view-documents" class="app-view" style="display:none">
-    <div class="page-header">
+<section id="view-documents" class="app-view" style="display: none">
+  <div class="page-header">
     <div>
-        <h1 class="page-title">Documents</h1>
-        <p class="page-subtitle">Manage and share files across your team</p>
+      <h1 class="page-title">Documents</h1>
+      <p class="page-subtitle">Manage and share files across your team</p>
     </div>
-    <button class="mat-btn mat-btn-primary" onclick="showToast('File upload dialog opened','')">
-        <span class="material-icons">upload_file</span> Upload PDF
+    <button class="mat-btn mat-btn-primary" onclick="showToast('File upload dialog opened', '')">
+      <span class="material-icons">upload_file</span> Upload PDF
     </button>
-    </div>
+  </div>
 
-    <div class="upload-zone" onclick="showToast('Select a file to upload','')">
+  <div class="upload-zone" onclick="showToast('Select a file to upload', '')">
     <div><span class="material-icons upload-icon">cloud_upload</span></div>
     <div class="upload-title">Drop files here or click to upload</div>
     <div class="upload-subtitle">Supports PDF, DOCX, XLSX · Max 50MB per file</div>
-    </div>
+  </div>
 
-    <div class="mat-card">
+  <div class="mat-card">
     <div class="table-toolbar">
-        <div class="table-title">All Documents</div>
-        <div style="display:flex;gap:10px">
+      <div class="table-title">All Documents</div>
+      <div style="display: flex; gap: 10px">
         <div class="search-field">
-            <span class="material-icons">search</span>
-            <input placeholder="Search documents…" />
+          <span class="material-icons">search</span>
+          <input placeholder="Search documents…" />
         </div>
-        <div class="mat-input-wrap" style="width:auto">
-            <select style="padding:7px 12px;font-size:13px">
+        <div class="mat-input-wrap" style="width: auto">
+          <select style="padding: 7px 12px; font-size: 13px">
             <option>All Types</option>
             <option>PDF</option>
             <option>DOCX</option>
             <option>XLSX</option>
-            </select>
+          </select>
         </div>
-        </div>
+      </div>
     </div>
     <table class="mat-table">
-        <thead>
+      <thead>
         <tr>
-            <th>File Name</th>
-            <th>Type</th>
-            <th>Size</th>
-            <th>Uploaded By</th>
-            <th class="sortable">Upload Date</th>
-            <th>Actions</th>
+          <th>File Name</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Uploaded By</th>
+          <th class="sortable">Upload Date</th>
+          <th>Actions</th>
         </tr>
-        </thead>
-        <tbody id="doc-tbody"></tbody>
+      </thead>
+      <tbody id="doc-tbody"></tbody>
     </table>
     <div class="mat-paginator">
-        <span>Rows per page: 10</span>
-        <span>1–8 of 8</span>
-        <div class="paginator-pages">
+      <span>Rows per page: 10</span>
+      <span>1–8 of 8</span>
+      <div class="paginator-pages">
         <button class="page-btn" disabled>‹</button>
         <button class="page-btn active">1</button>
         <button class="page-btn" disabled>›</button>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </section>
 
 <!-- ┌─────────── REPORTS ─────────────────────────────┐ -->
-<section id="view-reports" class="app-view" style="display:none">
-    <div class="page-header">
+<section id="view-reports" class="app-view" style="display: none">
+  <div class="page-header">
     <div>
-        <h1 class="page-title">Reports</h1>
-        <p class="page-subtitle">Generate and export business reports</p>
+      <h1 class="page-title">Reports</h1>
+      <p class="page-subtitle">Generate and export business reports</p>
     </div>
-    </div>
+  </div>
 
-    <div class="mat-card" style="margin-bottom:24px">
+  <div class="mat-card" style="margin-bottom: 24px">
     <div class="mat-card-content">
-        <div style="font-weight:600;font-size:14px;margin-bottom:16px">Report Filters</div>
-        <div class="report-filters">
+      <div style="font-weight: 600; font-size: 14px; margin-bottom: 16px">Report Filters</div>
+      <div class="report-filters">
         <div class="filter-group">
-            <div class="filter-label">Start Date</div>
-            <div class="mat-input-wrap">
+          <div class="filter-label">Start Date</div>
+          <div class="mat-input-wrap">
             <span class="material-icons mat-icon">event</span>
             <input type="date" value="2025-01-01" />
-            </div>
+          </div>
         </div>
         <div class="filter-group">
-            <div class="filter-label">End Date</div>
-            <div class="mat-input-wrap">
+          <div class="filter-label">End Date</div>
+          <div class="mat-input-wrap">
             <span class="material-icons mat-icon">event</span>
             <input type="date" value="2025-12-31" />
-            </div>
+          </div>
         </div>
         <div class="filter-group">
-            <div class="filter-label">Status</div>
-            <div class="mat-input-wrap">
+          <div class="filter-label">Status</div>
+          <div class="mat-input-wrap">
             <select>
-                <option>All Statuses</option>
-                <option>Active</option>
-                <option>Inactive</option>
-                <option>Lead</option>
+              <option>All Statuses</option>
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Lead</option>
             </select>
-            </div>
+          </div>
         </div>
-        <div style="display:flex;gap:8px;align-items:flex-end">
-            <button class="mat-btn mat-btn-primary" onclick="showToast('Report generated!','success')">
+        <div style="display: flex; gap: 8px; align-items: flex-end">
+          <button
+            class="mat-btn mat-btn-primary"
+            onclick="showToast('Report generated!', 'success')"
+          >
             <span class="material-icons">assessment</span> Generate
-            </button>
-            <button class="mat-btn mat-btn-stroked" onclick="showToast('Exporting to Excel…','')">
+          </button>
+          <button class="mat-btn mat-btn-stroked" onclick="showToast('Exporting to Excel…', '')">
             <span class="material-icons">file_download</span> Export
-            </button>
+          </button>
         </div>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 
-    <div class="mat-card">
+  <div class="mat-card">
     <div class="table-toolbar">
-        <div class="table-title">Report Results</div>
-        <span class="text-sm text-secondary">Generated: March 6, 2026</span>
+      <div class="table-title">Report Results</div>
+      <span class="text-sm text-secondary">Generated: March 6, 2026</span>
     </div>
     <table class="mat-table">
-        <thead>
+      <thead>
         <tr>
-            <th>Customer</th>
-            <th>Company</th>
-            <th class="sortable">Revenue</th>
-            <th>Deals</th>
-            <th>Status</th>
-            <th>Last Activity</th>
+          <th>Customer</th>
+          <th>Company</th>
+          <th class="sortable">Revenue</th>
+          <th>Deals</th>
+          <th>Status</th>
+          <th>Last Activity</th>
         </tr>
-        </thead>
-        <tbody id="report-tbody"></tbody>
+      </thead>
+      <tbody id="report-tbody"></tbody>
     </table>
     <div class="mat-paginator">
-        <span>Rows per page: 10</span>
-        <span>1–10 of 52</span>
-        <div class="paginator-pages">
+      <span>Rows per page: 10</span>
+      <span>1–10 of 52</span>
+      <div class="paginator-pages">
         <button class="page-btn" disabled>‹</button>
         <button class="page-btn active">1</button>
         <button class="page-btn">2</button>
         <button class="page-btn">3</button>
         <button class="page-btn">›</button>
-        </div>
-    </div>
-    </div>
-</section>
-
-<!-- ┌─────────── SETTINGS ────────────────────────────┐ -->
-<section id="view-settings" class="app-view" style="display:none">
-    <div class="page-header">
-    <div>
-        <h1 class="page-title">Settings</h1>
-        <p class="page-subtitle">Manage your account and application preferences</p>
-    </div>
-    <button class="mat-btn mat-btn-primary" onclick="showToast('Settings saved!','success')">
-        <span class="material-icons">save</span> Save Changes
-    </button>
-    </div>
-
-    <div class="settings-grid">
-    <div class="settings-nav">
-        <div class="settings-nav-item active"><span class="material-icons">manage_accounts</span> Profile</div>
-        <div class="settings-nav-item"><span class="material-icons">security</span> Security</div>
-        <div class="settings-nav-item"><span class="material-icons">notifications</span> Notifications</div>
-        <div class="settings-nav-item"><span class="material-icons">palette</span> Appearance</div>
-        <div class="settings-nav-item"><span class="material-icons">integration_instructions</span> Integrations</div>
-        <div class="settings-nav-item"><span class="material-icons">group</span> Team</div>
-    </div>
-
-    <div>
-        <div class="mat-card" style="margin-bottom:16px">
-        <div class="mat-card-content">
-            <div class="settings-section-title">Profile Information</div>
-            <div class="form-grid">
-            <div class="mat-form-field">
-                <label>First Name</label>
-                <div class="mat-input-wrap"><input type="text" value="Admin" /></div>
-            </div>
-            <div class="mat-form-field">
-                <label>Last Name</label>
-                <div class="mat-input-wrap"><input type="text" value="User" /></div>
-            </div>
-            <div class="mat-form-field full">
-                <label>Email Address</label>
-                <div class="mat-input-wrap">
-                <span class="material-icons mat-icon">email</span>
-                <input type="email" value="admin@crm.com" />
-                </div>
-            </div>
-            <div class="mat-form-field">
-                <label>Phone Number</label>
-                <div class="mat-input-wrap">
-                <span class="material-icons mat-icon">phone</span>
-                <input type="tel" value="+1 555 000 0000" />
-                </div>
-            </div>
-            <div class="mat-form-field">
-                <label>Role</label>
-                <div class="mat-input-wrap">
-                <select>
-                    <option>Super Admin</option>
-                    <option>Admin</option>
-                    <option>Manager</option>
-                </select>
-                </div>
-            </div>
-            <div class="mat-form-field full">
-                <label>Bio</label>
-                <div class="mat-input-wrap"><textarea rows="3" style="padding:10px 12px;resize:vertical">CRM system administrator managing the platform.</textarea></div>
-            </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="mat-card">
-        <div class="mat-card-content">
-            <div class="settings-section-title">Notifications</div>
-            <div class="settings-row">
-            <div class="settings-info">
-                <div class="label">Email Notifications</div>
-                <div class="hint">Receive updates via email</div>
-            </div>
-            <label class="toggle"><input type="checkbox" checked /><div class="toggle-slider"></div></label>
-            </div>
-            <div class="settings-row">
-            <div class="settings-info">
-                <div class="label">New Customer Alerts</div>
-                <div class="hint">Alert when new customers register</div>
-            </div>
-            <label class="toggle"><input type="checkbox" checked /><div class="toggle-slider"></div></label>
-            </div>
-            <div class="settings-row">
-            <div class="settings-info">
-                <div class="label">Weekly Reports</div>
-                <div class="hint">Receive weekly summary reports</div>
-            </div>
-            <label class="toggle"><input type="checkbox" /><div class="toggle-slider"></div></label>
-            </div>
-            <div class="settings-row">
-            <div class="settings-info">
-                <div class="label">System Maintenance Alerts</div>
-                <div class="hint">Be notified about downtime</div>
-            </div>
-            <label class="toggle"><input type="checkbox" checked /><div class="toggle-slider"></div></label>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</section>
-
-<!-- Customer Dialog -->
-<div class="dialog-backdrop" id="customer-dialog">
-  <div class="dialog-container">
-    <div class="dialog-title">
-      <h3 id="cust-dialog-title">Add Customer</h3>
-      <button class="mat-btn-icon mat-btn" onclick="closeDialog('customer-dialog')">
-        <span class="material-icons">close</span>
-      </button>
-    </div>
-    <div class="dialog-content">
-      <div class="form-grid">
-        <div class="mat-form-field">
-          <label>First Name *</label>
-          <div class="mat-input-wrap"><input type="text" placeholder="John" /></div>
-        </div>
-        <div class="mat-form-field">
-          <label>Last Name *</label>
-          <div class="mat-input-wrap"><input type="text" placeholder="Doe" /></div>
-        </div>
-        <div class="mat-form-field">
-          <label>Email *</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">email</span>
-            <input type="email" placeholder="john@company.com" />
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Phone</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">phone</span>
-            <input type="tel" placeholder="+1 555 000 0000" />
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Company</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">business</span>
-            <input type="text" placeholder="ACME Corp" />
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Status</label>
-          <div class="mat-input-wrap">
-            <select>
-              <option>Active</option>
-              <option>Inactive</option>
-              <option>Lead</option>
-              <option>Prospect</option>
-            </select>
-          </div>
-        </div>
-        <div class="mat-form-field full">
-          <label>Address</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">location_on</span>
-            <input type="text" placeholder="123 Main St, New York, NY 10001" />
-          </div>
-        </div>
-        <div class="mat-form-field full">
-          <label>Notes</label>
-          <div class="mat-input-wrap">
-            <textarea rows="3" placeholder="Additional notes…" style="padding:10px 12px;resize:vertical"></textarea>
-          </div>
-        </div>
       </div>
     </div>
-    <div class="dialog-actions">
-      <button class="mat-btn mat-btn-stroked" onclick="closeDialog('customer-dialog')">Cancel</button>
-      <button class="mat-btn mat-btn-primary" onclick="saveCustomer()">
-        <span class="material-icons">save</span> Save Customer
-      </button>
-    </div>
   </div>
-</div>
-
-<!-- Employee Dialog -->
-<div class="dialog-backdrop" id="employee-dialog">
-  <div class="dialog-container">
-    <div class="dialog-title">
-      <h3 id="emp-dialog-title">Add Employee</h3>
-      <button class="mat-btn-icon mat-btn" onclick="closeDialog('employee-dialog')">
-        <span class="material-icons">close</span>
-      </button>
-    </div>
-    <div class="dialog-content">
-      <div class="form-grid">
-        <div class="mat-form-field">
-          <label>First Name *</label>
-          <div class="mat-input-wrap"><input type="text" placeholder="Jane" /></div>
-        </div>
-        <div class="mat-form-field">
-          <label>Last Name *</label>
-          <div class="mat-input-wrap"><input type="text" placeholder="Smith" /></div>
-        </div>
-        <div class="mat-form-field">
-          <label>Email *</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">email</span>
-            <input type="email" placeholder="jane@crm.com" />
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Phone</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">phone</span>
-            <input type="tel" placeholder="+1 555 000 0000" />
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Department</label>
-          <div class="mat-input-wrap">
-            <select>
-              <option>Sales</option>
-              <option>Engineering</option>
-              <option>Marketing</option>
-              <option>Support</option>
-              <option>HR</option>
-              <option>Finance</option>
-            </select>
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Role</label>
-          <div class="mat-input-wrap"><input type="text" placeholder="Senior Account Executive" /></div>
-        </div>
-        <div class="mat-form-field">
-          <label>Status</label>
-          <div class="mat-input-wrap">
-            <select>
-              <option>Active</option>
-              <option>On Leave</option>
-              <option>Inactive</option>
-            </select>
-          </div>
-        </div>
-        <div class="mat-form-field">
-          <label>Start Date</label>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">calendar_today</span>
-            <input type="date" />
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="dialog-actions">
-      <button class="mat-btn mat-btn-stroked" onclick="closeDialog('employee-dialog')">Cancel</button>
-      <button class="mat-btn mat-btn-primary" onclick="saveEmployee()">
-        <span class="material-icons">save</span> Save Employee
-      </button>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- Confirm Delete Dialog -->
-<div class="dialog-backdrop" id="delete-dialog">
+<!-- <div class="dialog-backdrop" id="delete-dialog">
   <div class="dialog-container" style="max-width:380px">
     <div class="dialog-content" style="text-align:center;padding:32px">
       <div style="width:56px;height:56px;background:#fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px">
@@ -671,4 +438,4 @@
       </button>
     </div>
   </div>
-</div>
+</div> -->

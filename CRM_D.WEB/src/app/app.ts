@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SharedComponentsModule } from './shared-module/shared-components';
+import { SharedComponentsModule } from './shared/shared-components';
 
 @Component({
   selector: 'app-root',

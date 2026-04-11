@@ -1,7 +1,7 @@
 import { CommonService } from './../../core/services/common-service';
 import { Component, OnInit } from '@angular/core';
-import { SharedModule } from '../../shared-module/shared-module';
-import { SharedComponentsModule } from '../../shared-module/shared-components';
+import { SharedModule } from '../../shared/shared-module';
+import { SharedComponentsModule } from '../../shared/shared-components';
 import { AuthenticationFacade } from '../store/authentication.facade';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 

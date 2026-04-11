@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -41,6 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTooltipModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatDialogModule,
+    MatSelectModule,
   ],
   exports: [
     CommonModule,
@@ -63,6 +67,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTooltipModule,
     MatDividerModule,
     MatSnackBarModule,
+    MatDialogModule,
+    MatSelectModule
   ],
 })
 export class SharedModule {}

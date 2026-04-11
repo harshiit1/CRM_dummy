@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SharedComponentsModule } from '../../shared-module/shared-components';
+import { SharedComponentsModule } from '../../shared/shared-components';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
