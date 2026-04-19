@@ -18,8 +18,8 @@ WORKDIR /app
 
 COPY --from=build /app/CRM_D.API/out ./
 
-ENV ASPNETCORE_URLS=http://+:44394
+ENV ASPNETCORE_URLS=http://+:10000
 
-EXPOSE 44394    
+EXPOSE 10000    
 
 ENTRYPOINT ["dotnet", "CRM_D.API.dll"]
