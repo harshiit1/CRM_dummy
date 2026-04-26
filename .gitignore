@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build folders
+bin/
+obj/
+
+# Node (for Angular)
+node_modules/
+dist/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+/CRM_D.API/CRM_D.API/CRM_D.API.slnx
+/CRM_D.API/CRM_D.API/CRM_D.API.csproj.Backup.tmp

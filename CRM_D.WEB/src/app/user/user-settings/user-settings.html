@@ -1,0 +1,124 @@
+<section id="view-settings" class="app-view" style="display: none">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Settings</h1>
+      <p class="page-subtitle">Manage your account and application preferences</p>
+    </div>
+    <button class="mat-btn mat-btn-primary" onclick="showToast('Settings saved!', 'success')">
+      <span class="material-icons">save</span> Save Changes
+    </button>
+  </div>
+
+  <div class="settings-grid">
+    <div class="settings-nav">
+      <div class="settings-nav-item active">
+        <span class="material-icons">manage_accounts</span> Profile
+      </div>
+      <div class="settings-nav-item"><span class="material-icons">security</span> Security</div>
+      <div class="settings-nav-item">
+        <span class="material-icons">notifications</span> Notifications
+      </div>
+      <div class="settings-nav-item"><span class="material-icons">palette</span> Appearance</div>
+      <div class="settings-nav-item">
+        <span class="material-icons">integration_instructions</span> Integrations
+      </div>
+      <div class="settings-nav-item"><span class="material-icons">group</span> Team</div>
+    </div>
+
+    <div>
+      <div class="mat-card" style="margin-bottom: 16px">
+        <div class="mat-card-content">
+          <div class="settings-section-title">Profile Information</div>
+          <div class="form-grid">
+            <div class="mat-form-field">
+              <label>First Name</label>
+              <div class="mat-input-wrap"><input type="text" value="Admin" /></div>
+            </div>
+            <div class="mat-form-field">
+              <label>Last Name</label>
+              <div class="mat-input-wrap"><input type="text" value="User" /></div>
+            </div>
+            <div class="mat-form-field full">
+              <label>Email Address</label>
+              <div class="mat-input-wrap">
+                <span class="material-icons mat-icon">email</span>
+                <input type="email" value="admin@crm.com" />
+              </div>
+            </div>
+            <div class="mat-form-field">
+              <label>Phone Number</label>
+              <div class="mat-input-wrap">
+                <span class="material-icons mat-icon">phone</span>
+                <input type="tel" value="+1 555 000 0000" />
+              </div>
+            </div>
+            <div class="mat-form-field">
+              <label>Role</label>
+              <div class="mat-input-wrap">
+                <select>
+                  <option>Super Admin</option>
+                  <option>Admin</option>
+                  <option>Manager</option>
+                </select>
+              </div>
+            </div>
+            <div class="mat-form-field full">
+              <label>Bio</label>
+              <div class="mat-input-wrap">
+                <textarea rows="3" style="padding: 10px 12px; resize: vertical">
+CRM system administrator managing the platform.</textarea
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mat-card">
+        <div class="mat-card-content">
+          <div class="settings-section-title">Notifications</div>
+          <div class="settings-row">
+            <div class="settings-info">
+              <div class="label">Email Notifications</div>
+              <div class="hint">Receive updates via email</div>
+            </div>
+            <label class="toggle"
+              ><input type="checkbox" checked />
+              <div class="toggle-slider"></div
+            ></label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-info">
+              <div class="label">New Customer Alerts</div>
+              <div class="hint">Alert when new customers register</div>
+            </div>
+            <label class="toggle"
+              ><input type="checkbox" checked />
+              <div class="toggle-slider"></div
+            ></label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-info">
+              <div class="label">Weekly Reports</div>
+              <div class="hint">Receive weekly summary reports</div>
+            </div>
+            <label class="toggle"
+              ><input type="checkbox" />
+              <div class="toggle-slider"></div
+            ></label>
+          </div>
+          <div class="settings-row">
+            <div class="settings-info">
+              <div class="label">System Maintenance Alerts</div>
+              <div class="hint">Be notified about downtime</div>
+            </div>
+            <label class="toggle"
+              ><input type="checkbox" checked />
+              <div class="toggle-slider"></div
+            ></label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+<section id="view-documents" class="app-view">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Documents</h1>
+      <p class="page-subtitle">Manage and share files across your team</p>
+    </div>
+    <button class="mat-btn mat-btn-primary" (click)="showToast('File upload dialog opened')">
+      <span class="material-icons">upload_file</span> Upload PDF
+    </button>
+  </div>
+
+  <div class="upload-zone" (click)="fileInput.click()">
+    <input #fileInput type="file" (change)="onFileSelected($event)" hidden />
+    <div><span class="material-icons upload-icon">cloud_upload</span></div>
+    <div class="upload-title">
+      <p>Drop files here or click to upload</p>
+    </div>
+    <div class="upload-subtitle">Supports PDF, DOCX, XLSX · Max 50MB per file</div>
+  </div>
+
+  <div class="mat-card">
+    <div class="table-toolbar">
+      <div class="table-title">All Documents</div>
+      <div style="display: flex; gap: 10px">
+        <div class="search-field">
+          <span class="material-icons">search</span>
+          <input placeholder="Search documents…" />
+        </div>
+        <div class="mat-input-wrap" style="width: auto">
+          <select style="padding: 7px 12px; font-size: 13px">
+            <option>All Types</option>
+            <option>PDF</option>
+            <option>DOCX</option>
+            <option>XLSX</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <table class="mat-table">
+      <thead>
+        <tr>
+          <th>File Name</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Uploaded By</th>
+          <th class="sortable">Upload Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="doc-tbody"></tbody>
+    </table>
+    <div class="mat-paginator">
+      <span>Rows per page: 10</span>
+      <span>1–8 of 8</span>
+      <div class="paginator-pages">
+        <button class="page-btn" disabled>‹</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn" disabled>›</button>
+      </div>
+    </div>
+  </div>
+</section>

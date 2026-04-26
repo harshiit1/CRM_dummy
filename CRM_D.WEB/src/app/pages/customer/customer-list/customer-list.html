@@ -1,0 +1,72 @@
+<div id="view-customers" class="app-view" >
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Customers</h1>
+      <p class="page-subtitle">Manage your customer base</p>
+    </div>
+    <button class="mat-btn mat-btn-primary" (click)="openAddCustomerDialog()">
+      <span class="material-icons">person_add</span> Add Customer
+    </button>
+  </div>
+  <div class="mat-card">
+    <div class="table-toolbar">
+      <div class="chip-group">
+        <div class="chip active">All <strong style="margin-left: 4px">2,847</strong></div>
+        <div class="chip">Active</div>
+        <div class="chip">Inactive</div>
+        <div class="chip">Lead</div>
+      </div>
+      <div class="search-field">
+        <span class="material-icons">search</span>
+        <input placeholder="Search customers…" />
+      </div>
+    </div>
+    <table class="mat-table">
+      <thead>
+        <tr>
+          <th class="sortable">Customer Name</th>
+          <th class="sortable">Email</th>
+          <th>Phone</th>
+          <th>Company</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (customer of customers; track customer) {
+          <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+            <td>{{ customer.company }}</td>
+            <td>
+              <span class="status-badge" [ngClass]="customer.status">
+                {{ customer.status }}
+              </span>
+            </td>
+            <td>
+              <button class="mat-btn-icon" >
+                <span class="material-icons">edit</span>
+              </button>
+              <button class="mat-btn-icon" >
+                <span class="material-icons">delete</span>
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+    <div class="mat-paginator">
+      <span>Rows per page: 10</span>
+      <span>1–10 of 2,847</span>
+      <div class="paginator-pages">
+        <button class="page-btn" disabled>‹</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">…</button>
+        <button class="page-btn">285</button>
+        <button class="page-btn">›</button>
+      </div>
+    </div>
+  </div>
+</div>

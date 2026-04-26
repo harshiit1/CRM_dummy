@@ -1,0 +1,4 @@
+<app-sidebar (collapsedEvent)="sidebarCollapsedEvent($event)"></app-sidebar>
+<main class="mat-sidenav-content" [class.collapsed]="sidebarCollapsed">
+    <router-outlet></router-outlet>
+</main>
