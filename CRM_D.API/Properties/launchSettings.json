@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "CRM_D.API": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:63834;http://localhost:63835"
+    }
+  }
+}

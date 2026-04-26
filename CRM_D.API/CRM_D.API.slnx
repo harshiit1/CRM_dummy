@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../CRM_D.BLL/CRM_D.BLL.csproj" />
+  <Project Path="../CRM_D.Common/CRM_D.Common.csproj" />
+  <Project Path="../CRM_D.DLL/CRM_D.DLL.csproj" />
+  <Project Path="CRM_D.API.csproj" />
+</Solution>
