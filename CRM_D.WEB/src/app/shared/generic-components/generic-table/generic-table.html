@@ -1,0 +1,80 @@
+<section id="view-reports" class="app-view">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Reports</h1>
+      <p class="page-subtitle">Generate and export business reports</p>
+    </div>
+  </div>
+
+  <div class="mat-card" style="margin-bottom: 24px">
+    <div class="mat-card-content">
+      <div style="font-weight: 600; font-size: 14px; margin-bottom: 16px">Report Filters</div>
+      <div class="report-filters">
+        <div class="filter-group">
+          <div class="filter-label">Start Date</div>
+          <div class="mat-input-wrap">
+            <span class="material-icons mat-icon">event</span>
+            <input type="date" value="2025-01-01" />
+          </div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">End Date</div>
+          <div class="mat-input-wrap">
+            <span class="material-icons mat-icon">event</span>
+            <input type="date" value="2025-12-31" />
+          </div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Status</div>
+          <div class="mat-input-wrap">
+            <select>
+              <option>All Statuses</option>
+              <option>Active</option>
+              <option>Inactive</option>
+              <option>Lead</option>
+            </select>
+          </div>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: flex-end">
+          <button class="mat-btn mat-btn-primary" (click)="showToast('Report generated!')">
+            <span class="material-icons">assessment</span> Generate
+          </button>
+          <button class="mat-btn mat-btn-stroked" (click)="showToast('Exporting to Excel…')">
+            <span class="material-icons">file_download</span> Export
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mat-card">
+    <div class="table-toolbar">
+      <div class="table-title">Report Results</div>
+      <span class="text-sm text-secondary">Generated: March 6, 2026</span>
+    </div>
+    <table class="mat-table">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Company</th>
+          <th class="sortable">Revenue</th>
+          <th>Deals</th>
+          <th>Status</th>
+          <th>Last Activity</th>
+        </tr>
+      </thead>
+      <tbody id="report-tbody"></tbody>
+    </table>
+    <div class="mat-paginator">
+      <span>Rows per page: 10</span>
+      <span>1–10 of 52</span>
+      <div class="paginator-pages">
+        <button class="page-btn" disabled>‹</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">›</button>
+      </div>
+    </div>
+  </div>
+</section>

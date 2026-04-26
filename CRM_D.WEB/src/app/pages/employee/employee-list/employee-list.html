@@ -1,0 +1,49 @@
+<section id="view-employees" class="app-view">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Employees</h1>
+      <p class="page-subtitle">Manage your team members</p>
+    </div>
+    <button class="mat-btn mat-btn-primary" (click)="openDialog('employee-dialog', 'add')">
+      <span class="material-icons">person_add</span> Add Employee
+    </button>
+  </div>
+  <div class="mat-card">
+    <div class="table-toolbar">
+      <div class="chip-group">
+        <div class="chip active">All <strong style="margin-left: 4px">143</strong></div>
+        <div class="chip">Sales</div>
+        <div class="chip">Engineering</div>
+        <div class="chip">Support</div>
+      </div>
+      <div class="search-field">
+        <span class="material-icons">search</span>
+        <input placeholder="Search employees…" (oninput)="filterTable('emp-tbody', this.value)" />
+      </div>
+    </div>
+    <table class="mat-table">
+      <thead>
+        <tr>
+          <th>Employee</th>
+          <th class="sortable">Department</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="emp-tbody"></tbody>
+    </table>
+    <div class="mat-paginator">
+      <span>Rows per page: 10</span>
+      <span>1–10 of 143</span>
+      <div class="paginator-pages">
+        <button class="page-btn" disabled>‹</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">›</button>
+      </div>
+    </div>
+  </div>
+</section>

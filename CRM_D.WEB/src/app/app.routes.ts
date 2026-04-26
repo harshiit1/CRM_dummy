@@ -29,7 +29,24 @@ export const routes: Routes = [
       },
       {
         path: 'customers',
-        loadComponent: () => import('./pages/customer/customer-list/customer-list').then((m) => m.CustomerList),
+        loadComponent: () =>
+          import('./pages/customer/customer-list/customer-list').then(
+            (m) => m.CustomerListComponent,
+          ),
+      },
+      {
+        path: 'employees',
+        loadComponent: () =>
+          import('./pages/employee/employee-list/employee-list').then(
+            (m) => m.EmployeeListComponent,
+          ),
+      },
+      {
+        path: 'documents',
+        loadComponent: () =>
+          import('./pages/document/upload-document/upload-document').then(
+            (m) => m.UploadDocumentComponent,
+          ),
       },
     ],
   },

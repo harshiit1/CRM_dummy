@@ -9,7 +9,7 @@ import { CustomerFacade } from '../store/customer.facade';
   templateUrl: './customer-list.html',
   styleUrl: './customer-list.scss',
 })
-export class CustomerList {
+export class CustomerListComponent {
   customers = [
     {
       id: 1,

@@ -13,4 +13,10 @@ export class SharedFacade {
   redirectToCustomers() {
     this.store.dispatch(SharedActions.RedirectToCustomers());
   }
+  redirectToDocuments() {
+    this.store.dispatch(SharedActions.RedirectToDocuments());
+  }
+  redirectToEmployees() {
+    this.store.dispatch(SharedActions.RedirectToEmployees());
+  }
 }

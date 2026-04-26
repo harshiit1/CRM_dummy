@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { SharedModule } from '../shared/shared-module';
 import { IUserDetail } from '../authentication/models/user-detail-model';
-import { map, take } from 'rxjs';
+import { map, Subject, take } from 'rxjs';
 import { AuthenticationFacade } from '../authentication/store/authentication.facade';
 import { DashboardFacade } from './store/dashboard.facade';
 
@@ -41,7 +41,6 @@ export interface NavItem {
 
 // ─── Mock Data ─────────────────────────────────────────────────────────────────
 
-
 const METRIC_CARDS: MetricCard[] = [
   {
     title: 'Total Customers',
@@ -77,14 +76,6 @@ const METRIC_CARDS: MetricCard[] = [
   },
 ];
 
-const NAV_ITEMS: NavItem[] = [
-  { label: 'Dashboard', icon: 'dashboard', route: '/dashboard', active: true },
-  { label: 'Customers', icon: 'group', route: '/customers', badge: 3 },
-  { label: 'Employees', icon: 'badge', route: '/employees' },
-  { label: 'Reports', icon: 'bar_chart', route: '/reports' },
-  { label: 'Documents', icon: 'folder_open', route: '/documents', badge: 7 },
-  { label: 'Settings', icon: 'settings', route: '/settings' },
-];
 
 @Component({
   selector: 'app-dashboard',
@@ -93,7 +84,7 @@ const NAV_ITEMS: NavItem[] = [
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss'],
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -104,11 +95,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   // ── Data ───────────────────────────────────────────────────────────────────
   metricCards = METRIC_CARDS;
-  navItems = NAV_ITEMS;
   displayedColumns: string[] = ['avatar', 'name', 'email', 'phone', 'status', 'createdDate'];
 
   userData?: IUserDetail;
-
+  destroy$ = new Subject<void>();
   notifications = [
     { icon: 'person_add', message: 'New customer registered', time: '2m ago' },
     { icon: 'assignment', message: 'Project "Apollo" updated', time: '14m ago' },
@@ -131,7 +121,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     // this.dataSource.paginator = this.paginator;
     // this.dataSource.sort = this.sort;
-
     // // Custom filter predicate
     // this.dataSource.filterPredicate = (data: Customer, filter: string) => {
     //   const str = (data.name + data.email + data.phone + data.status).toLowerCase();
@@ -176,5 +165,10 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   trackByCard(_: number, card: MetricCard): string {
     return card.title;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.complete()
+    this.destroy$.next()
   }
 }

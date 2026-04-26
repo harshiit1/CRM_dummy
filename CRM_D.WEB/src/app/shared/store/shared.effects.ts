@@ -32,6 +32,26 @@ export class SharedEffects {
       ),
     { dispatch: false },
   );
+  RedirectToEmployeesPage$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(SharedActions.RedirectToEmployees),
+        tap(() => {
+          this.router.navigate(['/crm/employees']);
+        }),
+      ),
+    { dispatch: false },
+  );
+  RedirectToDocumentsPage$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(SharedActions.RedirectToDocuments),
+        tap(() => {
+          this.router.navigate(['/crm/documents']);
+        }),
+      ),
+    { dispatch: false },
+  );
 
   constructor() {}
 }
