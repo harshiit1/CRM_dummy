@@ -22,6 +22,9 @@ import { AuthenticationFacade } from '../../authentication/store/authentication.
 export class SidebarComponent implements OnInit, OnDestroy {
   sidenavCollapsed: boolean = false;
   userData?: IUserDetail;
+  activePage = 'Dashboard';
+  isReportOpen = false;
+  isPowerBIReportOpen = false;
   destroy$ = new Subject<void>();
   @Output() collapsedEvent = new EventEmitter<boolean>();
 
@@ -38,8 +41,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.sidenavCollapsed = !this.sidenavCollapsed;
     this.collapsedEvent.emit(this.sidenavCollapsed);
   }
-
-  activePage = 'Dashboard';
 
   menu = [
     { label: 'Dashboard', icon: 'dashboard', page: 'dashboard' },
@@ -83,6 +84,25 @@ export class SidebarComponent implements OnInit, OnDestroy {
   openDocumentsPage() {
     this.sharedFacade.redirectToDocuments();
     this.activePage = 'Documents';
+  }
+  openSalesReportPage() {
+    this.activePage = 'SalesReport';
+  }
+  openRateChangeReportPage() {
+    this.activePage = 'RateChangeReport';
+  }
+  openPowerBIReportPage() {
+    this.activePage = 'PowerBIReport';
+  }
+
+  toggleReports() {
+    this.activePage = 'Reports';
+    this.isReportOpen = !this.isReportOpen;
+  }
+
+  togglePowerBIReports() {
+    this.activePage = 'PowerBIReports';
+    this.isPowerBIReportOpen = !this.isPowerBIReportOpen;
   }
 
   ngOnDestroy(): void {
