@@ -30,10 +30,53 @@
       <span class="material-icons">folder_open</span>
       <span class="nav-label">Documents</span>
     </div>
-    <div class="nav-item" [class.active]="activePage === 'Reports'" (click)="openReportsPage()">
+    <div class="nav-item" [class.active]="activePage === 'Reports'" (click)="toggleReports()">
       <span class="material-icons">bar_chart</span>
       <span class="nav-label">Reports</span>
+      <span class="material-icons dropdown-icon">{{
+        isReportOpen ? 'expand_less' : 'expand_more'
+      }}</span>
     </div>
+    @if (isReportOpen) {
+      <div class="submenu">
+        <div
+          class="submenu-item"
+          [class.active]="activePage === 'SalesReport'"
+          (click)="openSalesReportPage()"
+        >
+          Sales Report
+        </div>
+        <div
+          class="submenu-item"
+          [class.active]="activePage === 'RateChangeReport'"
+          (click)="openRateChangeReportPage()"
+        >
+          Rate Change Report
+        </div>
+      </div>
+    }
+    <div
+      class="nav-item"
+      [class.active]="activePage === 'PowerBIReports'"
+      (click)="togglePowerBIReports()"
+    >
+      <span class="material-icons">bar_chart</span>
+      <span class="nav-label">Power BI Report</span>
+      <span class="material-icons dropdown-icon">{{
+        isPowerBIReportOpen ? 'expand_less' : 'expand_more'
+      }}</span>
+    </div>
+    @if (isPowerBIReportOpen) {
+      <div class="submenu">
+        <div
+          class="submenu-item"
+          [class.active]="activePage === 'PowerBIReport'"
+          (click)="openPowerBIReportPage()"
+        >
+          Sale Report
+        </div>
+      </div>
+    }
     <div class="nav-section-title">SYSTEM</div>
     <div class="nav-item" [class.active]="activePage === 'Settings'" (click)="openSettingsPage()">
       <span class="material-icons">settings</span>
