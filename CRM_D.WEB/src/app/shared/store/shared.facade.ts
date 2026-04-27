@@ -19,4 +19,10 @@ export class SharedFacade {
   redirectToEmployees() {
     this.store.dispatch(SharedActions.RedirectToEmployees());
   }
+  redirectToSaleReport() {
+    this.store.dispatch(SharedActions.RedirectToSaleReport());
+  }
+  redirectToRateChangeReport() {
+    this.store.dispatch(SharedActions.RedirectToRateChangeReport());
+  }
 }

@@ -5,7 +5,6 @@
       <p class="page-subtitle">Generate and export business reports</p>
     </div>
   </div>
-
   <div class="mat-card" style="margin-bottom: 24px">
     <div class="mat-card-content">
       <div style="font-weight: 600; font-size: 14px; margin-bottom: 16px">Report Filters</div>
@@ -46,34 +45,72 @@
       </div>
     </div>
   </div>
-
   <div class="mat-card">
     <div class="table-toolbar">
       <div class="table-title">Report Results</div>
-      <span class="text-sm text-secondary">Generated: March 6, 2026</span>
+      <ng-content select="[table-extra]"></ng-content>
     </div>
+
     <table class="mat-table">
       <thead>
         <tr>
-          <th>Customer</th>
-          <th>Company</th>
-          <th class="sortable">Revenue</th>
-          <th>Deals</th>
-          <th>Status</th>
-          <th>Last Activity</th>
+          @for (col of columns; track col) {
+            <th>
+              {{ col.label }}
+            </th>
+          }
         </tr>
       </thead>
-      <tbody id="report-tbody"></tbody>
+
+      <tbody>
+        @for (row of data; track row) {
+          <tr>
+            @for (col of columns; track col) {
+              <td>
+                {{ row[col.key] }}
+              </td>
+            }
+          </tr>
+        }
+
+        @if (data.length === 0) {
+          <tr>
+            <td [attr.colspan]="columns.length" style="text-align: center">No data available</td>
+          </tr>
+        }
+      </tbody>
     </table>
+
+    <!-- Pagination -->
     <div class="mat-paginator">
-      <span>Rows per page: 10</span>
-      <span>1–10 of 52</span>
+      <span>Rows per page: {{ pageSize }}</span>
+      <span>
+        {{ (currentPage - 1) * pageSize + 1 }}
+        –
+        {{ currentPage * pageSize }}
+        of {{ totalItems }}
+      </span>
+
       <div class="paginator-pages">
-        <button class="page-btn" disabled>‹</button>
-        <button class="page-btn active">1</button>
-        <button class="page-btn">2</button>
-        <button class="page-btn">3</button>
-        <button class="page-btn">›</button>
+        <button
+          class="page-btn"
+          [disabled]="currentPage === 1"
+          (click)="pageChange.emit(currentPage - 1)"
+        >
+          ‹
+        </button>
+
+        <button class="page-btn active">
+          {{ currentPage }}
+        </button>
+
+        <button
+          class="page-btn"
+          [disabled]="currentPage * pageSize >= totalItems"
+          (click)="pageChange.emit(currentPage + 1)"
+        >
+          ›
+        </button>
       </div>
     </div>
   </div>

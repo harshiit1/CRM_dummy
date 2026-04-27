@@ -7,3 +7,7 @@ export const RedirectToCustomers = createAction('[Shared] Redirect to Customers'
 export const RedirectToDocuments = createAction('[Shared] Redirect to Documents');
 
 export const RedirectToEmployees = createAction('[Shared] Redirect to Employees');
+
+export const RedirectToSaleReport = createAction('[Shared] Redirect to Sale Report');
+
+export const RedirectToRateChangeReport = createAction('[Shared] Redirect to Rate Change Report');

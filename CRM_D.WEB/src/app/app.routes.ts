@@ -42,11 +42,30 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'documents',
+        path: 'document',
         loadComponent: () =>
           import('./pages/document/upload-document/upload-document').then(
             (m) => m.UploadDocumentComponent,
           ),
+      },
+      {
+        path: 'report',
+        children: [
+          {
+            path: 'sale-report',
+            loadComponent: () =>
+              import('./pages/report/components/sale-report/sale-report').then(
+                (m) => m.SaleReportComponent,
+              ),
+          },
+          {
+            path: 'rate-change-report',
+            loadComponent: () =>
+              import('./pages/report/components/rate-change-report/rate-change-report').then(
+                (m) => m.RateChangeReportComponent,
+              ),
+          },
+        ],
       },
     ],
   },
