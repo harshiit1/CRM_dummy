@@ -47,7 +47,27 @@ export class SharedEffects {
       this.actions$.pipe(
         ofType(SharedActions.RedirectToDocuments),
         tap(() => {
-          this.router.navigate(['/crm/documents']);
+          this.router.navigate(['/crm/document']);
+        }),
+      ),
+    { dispatch: false },
+  );
+  RedirectToSaleReportPage$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(SharedActions.RedirectToSaleReport),
+        tap(() => {
+          this.router.navigate(['/crm/report/sale-report']);
+        }),
+      ),
+    { dispatch: false },
+  );
+  RedirectToRateChangeReportpage$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(SharedActions.RedirectToRateChangeReport),
+        tap(() => {
+          this.router.navigate(['/crm/report/rate-change-report']);
         }),
       ),
     { dispatch: false },
