@@ -12,6 +12,7 @@ namespace CRM_D.API.Helper
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IAuthentication, AuthenticationServices>();
             services.AddScoped<IUser, UserService>();
+            services.AddScoped<IReport, ReportService>();
         }
     }
 }
