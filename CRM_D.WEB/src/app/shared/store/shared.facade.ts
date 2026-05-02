@@ -22,7 +22,7 @@ export class SharedFacade {
   redirectToSaleReport() {
     this.store.dispatch(SharedActions.RedirectToSaleReport());
   }
-  redirectToRateChangeReport() {
-    this.store.dispatch(SharedActions.RedirectToRateChangeReport());
+  redirectToQuotationReport() {
+    this.store.dispatch(SharedActions.RedirectToQuotationReport());
   }
 }

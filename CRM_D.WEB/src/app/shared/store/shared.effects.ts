@@ -62,12 +62,12 @@ export class SharedEffects {
       ),
     { dispatch: false },
   );
-  RedirectToRateChangeReportpage$ = createEffect(
+  RedirectToQuotationReportpage$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(SharedActions.RedirectToRateChangeReport),
+        ofType(SharedActions.RedirectToQuotationReport),
         tap(() => {
-          this.router.navigate(['/crm/report/rate-change-report']);
+          this.router.navigate(['/crm/report/quotation-report']);
         }),
       ),
     { dispatch: false },
