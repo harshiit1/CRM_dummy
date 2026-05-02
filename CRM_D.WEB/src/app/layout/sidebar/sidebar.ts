@@ -89,9 +89,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     this.sharedFacade.redirectToSaleReport();
     this.activePage = 'SalesReport';
   }
-  openRateChangeReportPage() {
-    this.sharedFacade.redirectToRateChangeReport();
-    this.activePage = 'RateChangeReport';
+  openQuotationReportPage() {
+    this.sharedFacade.redirectToQuotationReport();
+    this.activePage = 'QuoatationReport';
   }
   openPowerBIReportPage() {
     this.activePage = 'PowerBIReport';

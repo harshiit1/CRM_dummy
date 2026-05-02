@@ -1,117 +1,69 @@
-<section id="view-reports" class="app-view">
-  <div class="page-header">
-    <div>
-      <h1 class="page-title">Reports</h1>
-      <p class="page-subtitle">Generate and export business reports</p>
-    </div>
+<div class="mat-card">
+  <div class="table-toolbar">
+    <div class="table-title">Report Results</div>
+    <ng-content select="[table-extra]"></ng-content>
   </div>
-  <div class="mat-card" style="margin-bottom: 24px">
-    <div class="mat-card-content">
-      <div style="font-weight: 600; font-size: 14px; margin-bottom: 16px">Report Filters</div>
-      <div class="report-filters">
-        <div class="filter-group">
-          <div class="filter-label">Start Date</div>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">event</span>
-            <input type="date" value="2025-01-01" />
-          </div>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">End Date</div>
-          <div class="mat-input-wrap">
-            <span class="material-icons mat-icon">event</span>
-            <input type="date" value="2025-12-31" />
-          </div>
-        </div>
-        <div class="filter-group">
-          <div class="filter-label">Status</div>
-          <div class="mat-input-wrap">
-            <select>
-              <option>All Statuses</option>
-              <option>Active</option>
-              <option>Inactive</option>
-              <option>Lead</option>
-            </select>
-          </div>
-        </div>
-        <div style="display: flex; gap: 8px; align-items: flex-end">
-          <button class="mat-btn mat-btn-primary" (click)="showToast('Report generated!')">
-            <span class="material-icons">assessment</span> Generate
-          </button>
-          <button class="mat-btn mat-btn-stroked" (click)="showToast('Exporting to Excel…')">
-            <span class="material-icons">file_download</span> Export
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="mat-card">
-    <div class="table-toolbar">
-      <div class="table-title">Report Results</div>
-      <ng-content select="[table-extra]"></ng-content>
-    </div>
 
-    <table class="mat-table">
-      <thead>
+  <table class="mat-table">
+    <thead>
+      <tr>
+        @for (col of columns; track col) {
+          <th>
+            {{ col.label }}
+          </th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (row of dataSource.data; track row) {
         <tr>
           @for (col of columns; track col) {
-            <th>
-              {{ col.label }}
-            </th>
+            <td>
+              {{ row[col.key] }}
+            </td>
           }
         </tr>
-      </thead>
+      }
 
-      <tbody>
-        @for (row of data; track row) {
-          <tr>
-            @for (col of columns; track col) {
-              <td>
-                {{ row[col.key] }}
-              </td>
-            }
-          </tr>
-        }
+      @if (dataSource.data.length === 0) {
+        <tr>
+          <td [attr.colspan]="columns.length" style="text-align: center">No data available</td>
+        </tr>
+      }
+    </tbody>
+  </table>
 
-        @if (data.length === 0) {
-          <tr>
-            <td [attr.colspan]="columns.length" style="text-align: center">No data available</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+  <!-- Pagination -->
+  <div class="mat-paginator">
+    <span>Rows per page: {{ pageSize }}</span>
+    <span>
+      {{ (currentPage - 1) * pageSize + 1 }}
+      –
+      {{ currentPage * pageSize }}
+      of {{ totalItems }}
+    </span>
 
-    <!-- Pagination -->
-    <div class="mat-paginator">
-      <span>Rows per page: {{ pageSize }}</span>
-      <span>
-        {{ (currentPage - 1) * pageSize + 1 }}
-        –
-        {{ currentPage * pageSize }}
-        of {{ totalItems }}
-      </span>
+    <div class="paginator-pages">
+      <button
+        class="page-btn"
+        [disabled]="currentPage === 1"
+        (click)="pageChange.emit(currentPage - 1)"
+      >
+        ‹
+      </button>
 
-      <div class="paginator-pages">
-        <button
-          class="page-btn"
-          [disabled]="currentPage === 1"
-          (click)="pageChange.emit(currentPage - 1)"
-        >
-          ‹
-        </button>
+      <button class="page-btn active">
+        {{ currentPage }}
+      </button>
 
-        <button class="page-btn active">
-          {{ currentPage }}
-        </button>
-
-        <button
-          class="page-btn"
-          [disabled]="currentPage * pageSize >= totalItems"
-          (click)="pageChange.emit(currentPage + 1)"
-        >
-          ›
-        </button>
-      </div>
+      <button
+        class="page-btn"
+        [disabled]="currentPage * pageSize >= totalItems"
+        (click)="pageChange.emit(currentPage + 1)"
+      >
+        ›
+      </button>
     </div>
   </div>
-</section>
+</div>

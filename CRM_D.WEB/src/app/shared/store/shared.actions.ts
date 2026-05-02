@@ -10,4 +10,4 @@ export const RedirectToEmployees = createAction('[Shared] Redirect to Employees'
 
 export const RedirectToSaleReport = createAction('[Shared] Redirect to Sale Report');
 
-export const RedirectToRateChangeReport = createAction('[Shared] Redirect to Rate Change Report');
+export const RedirectToQuotationReport = createAction('[Shared] Redirect to Quotation Report');
