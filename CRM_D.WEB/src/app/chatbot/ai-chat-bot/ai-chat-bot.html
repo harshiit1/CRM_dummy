@@ -1,0 +1,58 @@
+<div class="wrapper">
+  <div class="chat-panel" [class.hidden]="!isOpen">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="avatar">🤖</div>
+        <div>
+          <h3>CRM Assistant</h3>
+        </div>
+      </div>
+      <button class="close-btn" (click)="closePanel()">✖</button>
+    </div>
+
+    <div class="chat-body" #chatBody>
+      @for (msg of messages; track msg) {
+        <div
+        class="msg"
+        [ngClass]="{
+          bot: msg.role === 'bot',
+          user: msg.role === 'user',
+          typing: msg.typing,
+        }"
+        >
+          @if (!msg.typing) {
+            <ng-container>
+              {{ msg.text }}
+            </ng-container>
+          }
+
+          <ng-template #typingTpl>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </ng-template>
+        </div>
+      }
+    </div>
+
+    @if (showQuickReplies) {
+      <div class="quick-replies">
+        <button class="qr" (click)="quickReply('Show top leads this month')">Top leads</button>
+        <button class="qr" (click)="quickReply('Summarize revenue trends')">Revenue</button>
+        <button class="qr" (click)="quickReply('Who are my newest customers?')">Customers</button>
+      </div>
+    }
+
+    <div class="chat-footer">
+      <input
+        #chatInput
+        class="chat-input"
+        (keydown.enter)="sendMessage(chatInput.value)"
+        placeholder="Ask something…"
+      />
+
+      <button class="send-btn" (click)="sendMessage(chatInput.value)">➤</button>
+    </div>
+  </div>
+  <button class="fab" (click)="togglePanel()">💬</button>
+</div>
